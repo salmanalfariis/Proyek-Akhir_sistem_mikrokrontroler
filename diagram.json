@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "author": "Muhammad Salman Alfaris",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 64.2, "left": 98.8, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 67.2, "left": -71.96, "attrs": {} },
+    {
+      "type": "wokwi-cloud",
+      "id": "cloud1",
+      "top": -230,
+      "left": -140,
+      "attrs": { "cloud": "blynk" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -118.4,
+      "left": -42.4,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 143.4,
+      "left": 127.8,
+      "rotate": 90,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 0.3, "left": 311.4, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 168,
+      "left": 287.45,
+      "rotate": 90,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 71.2,
+      "left": 212.3,
+      "attrs": { "common": "anode" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 158.4,
+      "left": 191.45,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 158.4,
+      "left": 210.65,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": 158.4,
+      "left": 229.85,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "cloud1:RX", "green", [] ],
+    [ "esp:RX", "cloud1:TX", "green", [] ],
+    [ "esp:GND.1", "bb1:bn.24", "black", [ "h-19.05", "v86.4", "h-19.2" ] ],
+    [ "esp:3V3", "bb1:bp.1", "red", [ "h-28.65", "v220.8", "h228.8" ] ],
+    [ "lcd1:GND", "esp:GND.2", "black", [ "h-57.6", "v144", "h144", "v38.4" ] ],
+    [ "lcd1:VCC", "bb1:tp.2", "red", [ "h-48", "v124.9", "h219.2" ] ],
+    [ "bb1:tp.25", "bb1:bp.25", "red", [ "v0.3", "h40", "v172.8", "h-9.6" ] ],
+    [ "bb1:tn.25", "bb1:bn.25", "black", [ "v-0.1", "h49.6", "v172.8" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h-38.4", "v105.8", "h134.4", "v105.6" ] ],
+    [ "lcd1:SCL", "esp:22", "cyan", [ "h-28.8", "v86.7", "h134.4", "v76.8" ] ],
+    [ "dht1:GND", "bb1:bn.22", "black", [ "v115.2", "h19.2" ] ],
+    [ "dht1:SDA", "esp:15", "gold", [ "v124.8", "h-307.1" ] ],
+    [ "bb1:6b.i", "bb1:bn.5", "black", [ "v0" ] ],
+    [ "bb1:4b.i", "esp:14", "green", [ "h-67.2", "v86.4", "h-192", "v-96" ] ],
+    [ "dht1:VCC", "bb1:21t.c", "red", [ "v0" ] ],
+    [ "bb1:21b.i", "bb1:bp.17", "red", [ "v0" ] ],
+    [ "rgb1:B", "r4:1", "blue", [ "v0", "h11.2" ] ],
+    [ "btn1:1.l", "bb1:6t.c", "", [ "$bb" ] ],
+    [ "btn1:2.l", "bb1:4t.c", "", [ "$bb" ] ],
+    [ "btn1:1.r", "bb1:6b.h", "", [ "$bb" ] ],
+    [ "btn1:2.r", "bb1:4b.h", "", [ "$bb" ] ],
+    [ "dht1:VCC", "bb1:22t.a", "", [ "$bb" ] ],
+    [ "dht1:SDA", "bb1:23t.a", "", [ "$bb" ] ],
+    [ "dht1:NC", "bb1:24t.a", "", [ "$bb" ] ],
+    [ "dht1:GND", "bb1:25t.a", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:21t.d", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:21b.h", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:11t.c", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:11b.g", "", [ "$bb" ] ],
+    [ "r3:1", "bb1:13t.c", "", [ "$bb" ] ],
+    [ "r3:2", "bb1:13b.g", "", [ "$bb" ] ],
+    [ "r4:1", "bb1:15t.c", "", [ "$bb" ] ],
+    [ "r4:2", "bb1:15b.g", "", [ "$bb" ] ],
+    [ "rgb1:R", "r2:1", "blue", [ "v0" ] ],
+    [ "rgb1:G", "r3:1", "blue", [ "v0" ] ],
+    [ "rgb1:R", "bb1:11t.a", "", [ "$bb" ] ],
+    [ "rgb1:COM", "bb1:12t.b", "", [ "$bb" ] ],
+    [ "rgb1:G", "bb1:13t.a", "", [ "$bb" ] ],
+    [ "rgb1:B", "bb1:14t.a", "", [ "$bb" ] ],
+    [ "r2:2", "esp:19", "blue", [ "h0", "v133.2", "h-153.6", "v-163.2" ] ],
+    [ "r3:2", "esp:18", "blue", [ "h0", "v142.8", "h-182.4", "v-163.2" ] ],
+    [ "r4:2", "esp:17", "blue", [ "h0", "v152.4", "h-211.2", "v-163.2" ] ],
+    [ "rgb1:COM", "bb1:bp.10", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
